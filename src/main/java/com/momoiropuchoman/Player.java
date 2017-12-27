@@ -81,10 +81,22 @@ class Player implements Common {
 	}
 
 
+	private boolean canMove() {
+		try {
+			if(map[getNextX()][getNextY()].isHit()) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch(ArrayIndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+
 	void update() {
 
 		if(!isMoving && DirectionKey.getPressedKey() != Direction.NO) {
-			if(DirectionKey.getPressedKey() == direction && !map[getNextX()][getNextY()].isHit()) {
+			if(DirectionKey.getPressedKey() == direction && canMove()) {
 				isMoving = true;
 			} else {
 				updateDirection();
