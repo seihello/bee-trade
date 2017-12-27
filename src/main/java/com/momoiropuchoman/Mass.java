@@ -11,34 +11,39 @@ import java.awt.Graphics;
 class Mass implements Common {
 	private static BufferedImage massImage;
 	private static Map<Character, Integer> converter;
-	private Position position;
 	private char kind;
 	private int imageNo;
 
-	Mass(Position position, char kind) {
+	Mass(char kind) {
 		if(massImage == null) {
 			massImage = ImageLoader.getImage(path + "image/mass.gif");
 		}
 		if(converter == null) {
 			createConverter();
 		}
-
-		this.position = position;
 		imageNo = converter.get(kind).intValue();
 
 	}
 
-	void draw(Graphics graphics, int initX, int initY, int dx, int dy) {
+	void draw(Graphics graphics, int offsetX, int offsetY) {
 		graphics.drawImage(massImage,
-			(position.x - initX) * MASS_SIZE + dx,
-			(position.y - initY) * MASS_SIZE + dy,
-			(position.x - initX) * MASS_SIZE + MASS_SIZE + dx,
-			(position.y - initY) * MASS_SIZE + MASS_SIZE + dy,
+			offsetX,
+			offsetY,
+			offsetX + MASS_SIZE,
+			offsetY + MASS_SIZE,
 			(imageNo % 16) * CS,
 			(imageNo / 16) * CS,
 			(imageNo % 16) * CS + CS,
 			(imageNo / 16) * CS + CS,
 			null);
+	}
+
+	boolean isHit() {
+		if((imageNo >= 64 && imageNo < 127) || imageNo == 7 || imageNo == 8) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	private void createConverter() {

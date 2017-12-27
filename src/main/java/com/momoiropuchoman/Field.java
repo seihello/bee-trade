@@ -13,6 +13,7 @@ class Field implements Common {
 	Field(Player player) {
 		this.player = player;
 		map = MapLoader.load("france");
+		player.setMap(map);
 		if(massImage == null) {
 			massImage = ImageLoader.getImage(path + "image/mass.gif");
 		}
@@ -30,16 +31,18 @@ class Field implements Common {
 
 		for(int j = initY - 1; j < initY + MASS_Y_NUM + 1; j++) { 
 			for(int i = initX - 1; i < initX + MASS_X_NUM + 1; i++) { 
+				int offsetX = (i - initX) * MASS_SIZE + dx;
+				int offsetY = (j - initY) * MASS_SIZE + dy;
 				try {
-					map[i][j].draw(graphics, initX, initY, dx, dy);
+					map[i][j].draw(graphics, offsetX, offsetY);
 				} catch(ArrayIndexOutOfBoundsException e) {
 					// System.out.println("範囲外");
 					int imageNo = 64;
 					graphics.drawImage(massImage,
-						(i - initX) * MASS_SIZE + dx,
-						(j - initY) * MASS_SIZE + dy,
-						(i - initX) * MASS_SIZE + MASS_SIZE + dx,
-						(j - initY) * MASS_SIZE + MASS_SIZE + dy,
+						offsetX,
+						offsetY,
+						offsetX + MASS_SIZE,
+						offsetY + MASS_SIZE,
 						(imageNo % 16) * CS,
 						(imageNo / 16) * CS,
 						(imageNo % 16) * CS + CS,

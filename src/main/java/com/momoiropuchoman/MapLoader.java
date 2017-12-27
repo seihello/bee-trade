@@ -22,7 +22,7 @@ class MapLoader implements Common {
 			for(int j = 0; j < row; j++) {
 				String str = br.readLine();
 				for(int i = 0; i < col; i++) {
-					map[i][j] = new Mass(new Position(i, j), str.charAt(i));
+					map[i][j] = new Mass(str.charAt(i));
 				}
 			}
 

@@ -14,6 +14,7 @@ interface Common {
     public static final int BAR = 22;
 
     public static final int MASS_SIZE = WIDTH / MASS_X_NUM;
+    public static final int ONE_FRAME = MASS_SIZE / 4;
     public static final int CS = 32;
 
     public static final int SPRITE_ADJUST = MASS_SIZE / 4;
