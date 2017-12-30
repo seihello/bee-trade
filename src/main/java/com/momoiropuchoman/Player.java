@@ -3,17 +3,13 @@ package com.momoiropuchoman;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-class Player implements Common {
-	private Position position;
-	private Mass[][] map;
+class Player extends Sprite {
 	private int dx = 0, dy = 0;
 	private Direction direction = Direction.UP;
 	private boolean isMoving = false;
-	private static BufferedImage image;
-	private int imageNo = 0;
 
 	Player(Position position) {
-		this.position = position;
+		super(position);
 		if(image == null) {
 			image = ImageLoader.getImage(path + "image/chara.gif");
 		}
@@ -150,10 +146,6 @@ class Player implements Common {
 		return 0;
 	}
 
-
-	void setMap(Mass[][] map) {
-		this.map = map;
-	}
 
 	int getDx() {
 		return dx;

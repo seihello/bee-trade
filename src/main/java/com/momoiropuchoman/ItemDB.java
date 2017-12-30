@@ -56,7 +56,11 @@ class ItemDB extends DB {
 		PreparedStatement preparedStatement = null;
 
 		try {
-			preparedStatement = connection.prepareStatement("select * from items where ID in (select itemID from shopItems where shopID = ? order by itemID asc)");
+			preparedStatement = connection.prepareStatement("
+				select * from items 
+				where ID in 
+				(select itemID from shopItems where shopID = ? order by itemID asc)
+				");
 			preparedStatement.setInt(1, shopID);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {

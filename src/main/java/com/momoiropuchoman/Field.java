@@ -4,9 +4,13 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Field implements Common {
 	Mass[][] map;
 	Player player;
+	List<AroundSprite> aroundSprites = new ArrayList<AroundSprite>();
 	private static BufferedImage massImage;
 
 
