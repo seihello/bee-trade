@@ -42,7 +42,6 @@ class DirectionKey implements KeyListener, Common {
 
 	public void keyReleased(KeyEvent keyEvent) {
 		setPressedKey(Direction.NO);
-		// DirectionKey.setPressedKey(NO);
 	}
 	
 	public void keyTyped(KeyEvent keyEvent) {

@@ -15,7 +15,7 @@ class Game extends JPanel implements Common {
 		this.setBackground(Color.WHITE);
 		this.setDoubleBuffered(true);
 
-		player = new Player(new Position(8, 6));
+		player = new Player(new Position(8, 6), 0, "Link");
 		field = new Field(player);
 		
 	}

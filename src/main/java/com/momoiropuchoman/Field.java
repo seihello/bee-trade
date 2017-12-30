@@ -4,13 +4,16 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 class Field implements Common {
 	Mass[][] map;
 	Player player;
-	List<AroundSprite> aroundSprites = new ArrayList<AroundSprite>();
+	
+	Set<Chara> charas = new HashSet<Chara>();
+
+	
 	private static BufferedImage massImage;
 
 
@@ -21,6 +24,14 @@ class Field implements Common {
 		if(massImage == null) {
 			massImage = ImageLoader.getImage(path + "image/mass.gif");
 		}
+
+		Chara chara1 = new Chara(new Position(5, 5), 2, "King");
+		charas.add(chara1);
+		for(Object object: charas) {
+			Chara chara = (Chara)object;
+			map[chara.getPosition().x][chara.getPosition().y].setSprite(chara);
+		}
+
 	}
 
 	void draw(Graphics graphics) {
@@ -28,11 +39,12 @@ class Field implements Common {
 		graphics.drawString("", 0, 0);  
 		graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
-		int initX = player.getX() - MASS_X_NUM / 2;
-		int initY = player.getY() - MASS_Y_NUM / 2;
+		int initX = player.getPosition().x - MASS_X_NUM / 2;
+		int initY = player.getPosition().y - MASS_Y_NUM / 2;
 		int dx = player.getDx();
 		int dy = player.getDy();
 
+		// マップ描画
 		for(int j = initY - 1; j < initY + MASS_Y_NUM + 1; j++) { 
 			for(int i = initX - 1; i < initX + MASS_X_NUM + 1; i++) { 
 				int offsetX = (i - initX) * MASS_SIZE + dx;
@@ -54,6 +66,12 @@ class Field implements Common {
 						null);
 				}
 			}
+		}
+
+		// Sprite描画
+		for(Object object: charas) {
+			Chara chara = (Chara)object;
+			chara.draw(graphics, initX, initY, dx, dy);
 		}
 	}
 

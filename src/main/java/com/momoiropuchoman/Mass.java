@@ -13,6 +13,7 @@ class Mass implements Common {
 	private static Map<Character, Integer> converter;
 	private char kind;
 	private int imageNo;
+	private Sprite sprite = null;
 
 	Mass(char kind) {
 		if(massImage == null) {
@@ -41,9 +42,15 @@ class Mass implements Common {
 	boolean isHit() {
 		if((imageNo >= 64 && imageNo < 127) || imageNo == 7 || imageNo == 8) {
 			return true;
+		} else if(sprite != null) {
+			return true;
 		} else {
 			return false;
 		}
+	}
+
+	void setSprite(Sprite sprite) {
+		this.sprite = sprite;
 	}
 
 	private void createConverter() {

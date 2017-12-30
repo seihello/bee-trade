@@ -10,6 +10,7 @@ com/momoiropuchoman/ImageLoader.class
 com/momoiropuchoman/Game.class
 com/momoiropuchoman/Field.class
 com/momoiropuchoman/Position.class
+com/momoiropuchoman/Chara.class
 com/momoiropuchoman/Common.class
 com/momoiropuchoman/Item.class
 com/momoiropuchoman/Common$Direction.class

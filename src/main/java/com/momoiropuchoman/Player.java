@@ -7,9 +7,13 @@ class Player extends Sprite {
 	private int dx = 0, dy = 0;
 	private Direction direction = Direction.UP;
 	private boolean isMoving = false;
+	private static BufferedImage image;
+	private String name;
+	private Mass[][] map;
 
-	Player(Position position) {
-		super(position);
+
+	Player(Position position, int imageNo, String name) {
+		super(position, imageNo);
 		if(image == null) {
 			image = ImageLoader.getImage(path + "image/chara.gif");
 		}
@@ -110,13 +114,7 @@ class Player extends Sprite {
 
 	}
 
-	int getX() {
-		return position.x;
-	}
 
-	int getY() {
-		return position.y;
-	}
 
 	int getNextX() {
 		switch(direction) {
@@ -161,6 +159,10 @@ class Player extends Sprite {
 
 	boolean isMoving() {
 		return isMoving;
+	}
+
+	void setMap(Mass[][] map) {
+		this.map = map;
 	}
 
 

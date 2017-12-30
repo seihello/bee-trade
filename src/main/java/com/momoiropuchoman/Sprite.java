@@ -4,18 +4,18 @@ import java.awt.image.BufferedImage;
 
 abstract class Sprite implements Common {
 	protected Position position;
-	protected Mass[][] map;
 
-	protected static BufferedImage image;
 	protected int imageNo;
-	protected String name;
 
-	Sprite(Position position) {
+	Sprite(Position position, int imageNo) {
 		this.position = position;
+		this.imageNo = imageNo;
 	}
 
-	void setMap(Mass[][] map) {
-		this.map = map;
+	
+
+	Position getPosition() {
+		return position;
 	}
 
 }
