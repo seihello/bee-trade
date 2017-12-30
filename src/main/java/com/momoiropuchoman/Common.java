@@ -2,9 +2,11 @@ package com.momoiropuchoman;
 
 interface Common {
 
-    public enum Direction {
-        LEFT, RIGHT, UP, DOWN, NO
-    }
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
+    public static final int UP = 2;
+    public static final int DOWN = 3;
+    public static final int NO = 4;
 
     public static final int MASS_X_NUM = 15;
     public static final int MASS_Y_NUM = 15;

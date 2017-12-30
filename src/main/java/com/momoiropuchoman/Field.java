@@ -27,10 +27,6 @@ class Field implements Common {
 
 		charas = new FieldDB().getCharas(fieldName);
 
-		Chara chara1 = new Chara(new Position(5, 5), 2, "King");
-		charas.add(chara1);
-
-
 		for(Object object: charas) {
 			Chara chara = (Chara)object;
 			map[chara.getPosition().x][chara.getPosition().y].setSprite(chara);

@@ -5,28 +5,28 @@ import java.awt.event.KeyEvent;
 
 class DirectionKey implements KeyListener, Common {
 
-	private static Direction pressedKey = Direction.NO;
+	private static int pressedKey = NO;
 
-	static Direction getPressedKey() {
+	static int getPressedKey() {
 		return pressedKey;
 	}
 
-	private static void setPressedKey(Direction key) {
+	private static void setPressedKey(int key) {
 		pressedKey = key;
 	} 
 
-	private static Direction toDirection(int keyCode) {
+	private static int toDirection(int keyCode) {
 		switch(keyCode) {
 			case KeyEvent.VK_UP:
-			return Direction.UP;
+			return UP;
 			case KeyEvent.VK_DOWN:
-			return Direction.DOWN;
+			return DOWN;
 			case KeyEvent.VK_LEFT:
-			return Direction.LEFT;
+			return LEFT;
 			case KeyEvent.VK_RIGHT:
-			return Direction.RIGHT;
+			return RIGHT;
 			default:
-			return Direction.NO;
+			return NO;
 		}
 	}
 
@@ -41,7 +41,7 @@ class DirectionKey implements KeyListener, Common {
 	}
 
 	public void keyReleased(KeyEvent keyEvent) {
-		setPressedKey(Direction.NO);
+		setPressedKey(NO);
 	}
 	
 	public void keyTyped(KeyEvent keyEvent) {

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 class Player extends Sprite {
 	private int dx = 0, dy = 0;
-	private Direction direction = Direction.UP;
+	private int direction = UP;
 	private boolean isMoving = false;
 	private static BufferedImage image;
 	private String name;
@@ -27,9 +27,9 @@ class Player extends Sprite {
 			(MASS_X_NUM / 2) * MASS_SIZE + MASS_SIZE,
 			(MASS_Y_NUM / 2) * MASS_SIZE + MASS_SIZE - SPRITE_ADJUST,
 			(imageNo % 8) * (CS * 2),
-			(imageNo / 8) * (CS * 4) + direction.ordinal() * CS,
+			(imageNo / 8) * (CS * 4) + direction * CS,
 			(imageNo % 8) * (CS * 2) + CS,
-			(imageNo / 8) * (CS * 4) + direction.ordinal() * CS + CS,
+			(imageNo / 8) * (CS * 4) + direction * CS + CS,
 			null);
 	}
 
@@ -95,7 +95,7 @@ class Player extends Sprite {
 
 	void update() {
 
-		if(!isMoving && DirectionKey.getPressedKey() != Direction.NO) {
+		if(!isMoving && DirectionKey.getPressedKey() != NO) {
 			if(DirectionKey.getPressedKey() == direction && canMove()) {
 				isMoving = true;
 			} else {
@@ -153,7 +153,7 @@ class Player extends Sprite {
 		return dy;
 	}
 
-	Direction getDirection() {
+	int getDirection() {
 		return direction;
 	}
 
