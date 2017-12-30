@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 class Chara extends Sprite {
 	private static BufferedImage image;
 	private String name;
-	private Direction direction = Direction.UP;
+	private Direction direction = Direction.DOWN;
 
 	Chara(Position position, int imageNo, String name) {
 		super(position, imageNo);

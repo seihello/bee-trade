@@ -6,6 +6,7 @@ com/momoiropuchoman/BeeTrade.class
 com/momoiropuchoman/DB.class
 com/momoiropuchoman/DirectionKey.class
 com/momoiropuchoman/Player$1.class
+com/momoiropuchoman/FieldDB.class
 com/momoiropuchoman/ImageLoader.class
 com/momoiropuchoman/Game.class
 com/momoiropuchoman/Field.class

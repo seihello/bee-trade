@@ -7,15 +7,12 @@ import java.sql.SQLException;
 
 class DB {
 
-	public static final String DB_NAME = "BeeTrade.db";
+	public static final String DB_NAME = "BeeTrade.sqlite";
 
 	protected Connection getConnection() {
 		try {
-			Class.forName("org.sqlite.JDBC");
+			// Class.forName("org.sqlite.JDBC");
 			return DriverManager.getConnection("jdbc:sqlite:" + DB_NAME);
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;

@@ -13,20 +13,24 @@ class Field implements Common {
 	
 	Set<Chara> charas = new HashSet<Chara>();
 
-	
+
 	private static BufferedImage massImage;
 
 
-	Field(Player player) {
+	Field(String fieldName, Player player) {
 		this.player = player;
-		map = MapLoader.load("france");
+		map = MapLoader.load(fieldName);
 		player.setMap(map);
 		if(massImage == null) {
 			massImage = ImageLoader.getImage(path + "image/mass.gif");
 		}
 
+		charas = new FieldDB().getCharas(fieldName);
+
 		Chara chara1 = new Chara(new Position(5, 5), 2, "King");
 		charas.add(chara1);
+
+
 		for(Object object: charas) {
 			Chara chara = (Chara)object;
 			map[chara.getPosition().x][chara.getPosition().y].setSprite(chara);
