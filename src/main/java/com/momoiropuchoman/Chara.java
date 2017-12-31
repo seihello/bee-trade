@@ -22,9 +22,7 @@ class Chara extends Sprite {
 		}
 	}
 
-	void draw(Graphics g, int initX, int initY, int dx, int dy) {
-		int offsetX = (position.x - initX) * MASS_SIZE + dx;
-		int offsetY = (position.y - initY) * MASS_SIZE + dy;
+	void draw(Graphics g, int offsetX, int offsetY) {
 		g.drawImage(image,	      
 			offsetX,
 			offsetY - SPRITE_ADJUST,

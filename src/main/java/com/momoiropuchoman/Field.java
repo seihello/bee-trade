@@ -71,7 +71,16 @@ class Field implements Common {
 		// Sprite描画
 		for(Object object: charas) {
 			Chara chara = (Chara)object;
-			chara.draw(graphics, initX, initY, dx, dy);
+			int offsetX = (chara.getPosition().x - initX) * MASS_SIZE + dx;
+			int offsetY = (chara.getPosition().y - initY) * MASS_SIZE + dy;
+			chara.draw(graphics, offsetX, offsetY);
+		}
+	}
+
+	void update() {
+		for(Object object: charas) {
+			Chara chara = (Chara)object;
+			chara.update();
 		}
 	}
 

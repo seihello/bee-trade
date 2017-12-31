@@ -35,7 +35,7 @@ class Game extends JPanel implements Common {
 	}
 
 	private void update() {
-		// field.update();
+		field.update();
 		player.update();
 	}
 
