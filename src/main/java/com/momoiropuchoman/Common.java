@@ -8,13 +8,14 @@ interface Common {
     public static final int DOWN = 3;
     public static final int NO = 4;
 
-    public static final int MASS_X_NUM = 15;
-    public static final int MASS_Y_NUM = 15;
-
-    public static final int WIDTH = 600;
+    public static final int WIDTH = 1000;
     public static final int HEIGHT = 600;
     public static final int BAR = 22;
 
+    public static final int MASS_X_NUM = 25;
+    public static final int MASS_Y_NUM = 15;
+
+    // 1つのマスは必ず正方形という条件が保証されている前提とする
     public static final int MASS_SIZE = WIDTH / MASS_X_NUM;
     public static final int ONE_FRAME = MASS_SIZE / 4;
     public static final int CS = 32;

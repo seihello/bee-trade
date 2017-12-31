@@ -20,12 +20,12 @@ class Player extends Sprite {
 	}
 
 
-	void draw(Graphics graphics) {
+	void draw(Graphics graphics, int offsetX, int offsetY) {
 		graphics.drawImage(image,
-			(MASS_X_NUM / 2) * MASS_SIZE,
-			(MASS_Y_NUM / 2) * MASS_SIZE - SPRITE_ADJUST,
-			(MASS_X_NUM / 2) * MASS_SIZE + MASS_SIZE,
-			(MASS_Y_NUM / 2) * MASS_SIZE + MASS_SIZE - SPRITE_ADJUST,
+			offsetX,
+			offsetY - SPRITE_ADJUST,
+			offsetX + MASS_SIZE,
+			offsetY + MASS_SIZE - SPRITE_ADJUST,
 			(imageNo % 8) * (CS * 2),
 			(imageNo / 8) * (CS * 4) + direction * CS,
 			(imageNo % 8) * (CS * 2) + CS,

@@ -2,6 +2,8 @@ package com.momoiropuchoman;
 
 import java.awt.image.BufferedImage;
 
+import java.awt.Graphics;
+
 abstract class Sprite implements Common {
 	protected Position position;
 
@@ -12,6 +14,7 @@ abstract class Sprite implements Common {
 		this.imageNo = imageNo;
 	}
 
+	abstract void draw(Graphics graphics, int offsetX, int offsetY);
 	
 
 	Position getPosition() {

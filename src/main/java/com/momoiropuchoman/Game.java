@@ -42,7 +42,7 @@ class Game extends JPanel implements Common {
 	protected void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);		
 		field.draw(graphics);
-		player.draw(graphics);
+		player.draw(graphics, (MASS_X_NUM / 2) * MASS_SIZE, (MASS_Y_NUM / 2) * MASS_SIZE);
 	}
 
 }
