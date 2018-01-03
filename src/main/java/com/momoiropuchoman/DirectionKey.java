@@ -5,17 +5,26 @@ import java.awt.event.KeyEvent;
 
 class DirectionKey implements KeyListener, Common {
 
-	private static int pressedKey = NO;
+	private static DirectionKey directionKey = new DirectionKey();
+	private int pressedKey = NO;
 
-	static int getPressedKey() {
+	private DirectionKey() { 
+		// do nothing.
+	}
+
+	static DirectionKey getInstance() {
+		return directionKey;
+	}
+
+	int getPressedKey() {
 		return pressedKey;
 	}
 
-	private static void setPressedKey(int key) {
+	private void setPressedKey(int key) {
 		pressedKey = key;
 	} 
 
-	private static int toDirection(int keyCode) {
+	private int toDirection(int keyCode) {
 		switch(keyCode) {
 			case KeyEvent.VK_UP:
 			return UP;

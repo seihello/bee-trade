@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 class Player extends Sprite {
+
+	DirectionKey directionKey;
 	private int dx = 0, dy = 0;
 	private int direction = UP;
 	private boolean isMoving = false;
@@ -12,8 +14,11 @@ class Player extends Sprite {
 	private Mass[][] map;
 
 
-	Player(Position position, int imageNo, String name) {
+	Player(Position position, int imageNo, String name, Mass[][] map) {
 		super(position, imageNo);
+		this.name = name;
+		this.map = map;
+		directionKey = DirectionKey.getInstance();
 		if(image == null) {
 			image = ImageLoader.getImage(path + "image/chara.gif");
 		}
@@ -52,7 +57,7 @@ class Player extends Sprite {
 	}
 
 	private void updateDirection() {
-		direction = DirectionKey.getPressedKey();
+		direction = directionKey.getPressedKey();
 	}
 
 	private void updateDefference() {
@@ -95,8 +100,8 @@ class Player extends Sprite {
 
 	void update() {
 
-		if(!isMoving && DirectionKey.getPressedKey() != NO) {
-			if(DirectionKey.getPressedKey() == direction && canMove()) {
+		if(!isMoving && directionKey.getPressedKey() != NO) {
+			if(directionKey.getPressedKey() == direction && canMove()) {
 				isMoving = true;
 			} else {
 				updateDirection();

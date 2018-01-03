@@ -9,6 +9,7 @@ com/momoiropuchoman/FieldDB.class
 com/momoiropuchoman/ImageLoader.class
 com/momoiropuchoman/Game.class
 com/momoiropuchoman/Field.class
+com/momoiropuchoman/MessageBoard.class
 com/momoiropuchoman/Position.class
 com/momoiropuchoman/Chara.class
 com/momoiropuchoman/Common.class

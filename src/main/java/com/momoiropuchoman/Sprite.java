@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 
 abstract class Sprite implements Common {
-	protected Position position;
 
+	protected Position position;
 	protected int imageNo;
 
 	Sprite(Position position, int imageNo) {
@@ -15,7 +15,6 @@ abstract class Sprite implements Common {
 	}
 
 	abstract void draw(Graphics graphics, int offsetX, int offsetY);
-	
 
 	Position getPosition() {
 		return position;

@@ -9,18 +9,14 @@ import java.util.Set;
 
 class Field implements Common {
 	Mass[][] map;
-	Player player;
 	
 	Set<Chara> charas = new HashSet<Chara>();
-
 
 	private static BufferedImage massImage;
 
 
-	Field(String fieldName, Player player) {
-		this.player = player;
+	Field(String fieldName) {
 		map = MapLoader.load(fieldName);
-		player.setMap(map);
 		if(massImage == null) {
 			massImage = ImageLoader.getImage(path + "image/mass.gif");
 		}
@@ -34,15 +30,12 @@ class Field implements Common {
 
 	}
 
-	void draw(Graphics graphics) {
+	void draw(Graphics graphics, int initX, int initY, int dx, int dy) {
 
 		graphics.drawString("", 0, 0);  
 		graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
-		int initX = player.getPosition().x - MASS_X_NUM / 2;
-		int initY = player.getPosition().y - MASS_Y_NUM / 2;
-		int dx = player.getDx();
-		int dy = player.getDy();
+	
 
 		// マップ描画
 		for(int j = initY - 1; j < initY + MASS_Y_NUM + 1; j++) { 
@@ -82,6 +75,10 @@ class Field implements Common {
 			Chara chara = (Chara)object;
 			chara.update();
 		}
+	}
+
+	Mass[][] getMap() {
+		return map;
 	}
 
 
