@@ -1,11 +1,10 @@
 package com.momoiropuchoman;
 
-import javax.swing.JPanel;
 
-import java.awt.Color;
-import java.awt.Graphics;
 
-class Game extends JPanel implements Common {
+class Game implements Common {
+
+	Drawing drawing;
 
 	Field field;
 	Player player;
@@ -15,13 +14,10 @@ class Game extends JPanel implements Common {
 	public static final int MESSAGE = 1;
 
 	Game() {
-		this.setBounds(0, 0, Common.WIDTH, Common.HEIGHT);
-		this.setBackground(Color.WHITE);
-		this.setDoubleBuffered(true);
 
-		
 		field = new Field("France");
 		player = new Player(field.getMap(), new Position(8, 6), 0, "Link");
+		drawing = new Drawing(field, player);
 		
 	}
 
@@ -32,7 +28,7 @@ class Game extends JPanel implements Common {
 			if(mode == GAME) {
 				update();
 			}
-			repaint();
+			drawing.repaint();
 			try {
 				Thread.sleep(50); 
 			} catch(InterruptedException e) {
@@ -46,10 +42,8 @@ class Game extends JPanel implements Common {
 		player.update();
 	}
 
-	protected void paintComponent(Graphics graphics) {
-		super.paintComponent(graphics);	
-		field.draw(graphics, player.getPosition().x - MASS_X_NUM / 2, player.getPosition().y - MASS_Y_NUM / 2, player.getDx(), player.getDy());
-		player.draw(graphics, (MASS_X_NUM / 2) * MASS_SIZE, (MASS_Y_NUM / 2) * MASS_SIZE);
+	Drawing getDrawing() {
+		return drawing;
 	}
 
 }
