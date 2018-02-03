@@ -9,25 +9,23 @@ import java.util.Set;
 
 class Field implements Common {
 	Mass[][] map;
+	Mass outOfField;
 	
-	Set<Chara> charas = new HashSet<Chara>();
+	Set<AroundSprite> charas = new HashSet<AroundSprite>();
 
 	private static BufferedImage massImage;
 
 
 	Field(String fieldName) {
 		map = MapLoader.load(fieldName);
+		outOfField = new Mass('海');
+
+
+		charas = new FieldDB().getCharasAsAroundSprite(fieldName, map);
+
 		if(massImage == null) {
 			massImage = ImageLoader.getImage(path + "image/mass.gif");
-		}
-
-		charas = new FieldDB().getCharas(fieldName);
-
-		for(Object object: charas) {
-			Chara chara = (Chara)object;
-			map[chara.getPosition().x][chara.getPosition().y].setSprite(chara);
-		}
-
+		}		
 	}
 
 	void draw(Graphics graphics, int initX, int initY, int dx, int dy) {
@@ -35,7 +33,7 @@ class Field implements Common {
 		graphics.drawString("", 0, 0);  
 		graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
-	
+
 
 		// マップ描画
 		for(int j = initY - 1; j < initY + MASS_Y_NUM + 1; j++) { 
@@ -45,37 +43,28 @@ class Field implements Common {
 				try {
 					map[i][j].draw(graphics, offsetX, offsetY);
 				} catch(ArrayIndexOutOfBoundsException e) {
-					// System.out.println("範囲外");
-					int imageNo = 64;
-					graphics.drawImage(massImage,
-						offsetX,
-						offsetY,
-						offsetX + MASS_SIZE,
-						offsetY + MASS_SIZE,
-						(imageNo % 16) * CS,
-						(imageNo / 16) * CS,
-						(imageNo % 16) * CS + CS,
-						(imageNo / 16) * CS + CS,
-						null);
+					outOfField.draw(graphics, offsetX, offsetY);
 				}
 			}
 		}
 
 		// Sprite描画
 		for(Object object: charas) {
-			Chara chara = (Chara)object;
-			int offsetX = (chara.getPosition().x - initX) * MASS_SIZE + dx;
-			int offsetY = (chara.getPosition().y - initY) * MASS_SIZE + dy;
-			chara.draw(graphics, offsetX, offsetY);
+			AroundSprite sprite = (AroundSprite)object;
+			int offsetX = (sprite.getPosition().x - initX) * MASS_SIZE + dx;
+			int offsetY = (sprite.getPosition().y - initY) * MASS_SIZE + dy;
+			sprite.draw(graphics, offsetX, offsetY);
 		}
 	}
 
-	void update() {
+	void update(int initX, int initY) {
 		for(Object object: charas) {
-			Chara chara = (Chara)object;
-			chara.update();
+			AroundSprite sprite = (AroundSprite)object;
+			sprite.update();
 		}
 	}
+
+
 
 	Mass[][] getMap() {
 		return map;

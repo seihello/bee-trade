@@ -4,7 +4,6 @@ com/momoiropuchoman/Sprite.class
 com/momoiropuchoman/Player.class
 com/momoiropuchoman/BeeTrade.class
 com/momoiropuchoman/DB.class
-com/momoiropuchoman/DirectionKey.class
 com/momoiropuchoman/FieldDB.class
 com/momoiropuchoman/ImageLoader.class
 com/momoiropuchoman/Game.class
@@ -12,6 +11,10 @@ com/momoiropuchoman/Field.class
 com/momoiropuchoman/MessageBoard.class
 com/momoiropuchoman/Position.class
 com/momoiropuchoman/Chara.class
+com/momoiropuchoman/AroundSprite.class
 com/momoiropuchoman/Common.class
+com/momoiropuchoman/Stuff.class
+com/momoiropuchoman/UpdateHandler.class
+com/momoiropuchoman/Key.class
 com/momoiropuchoman/Item.class
 com/momoiropuchoman/ItemDB.class

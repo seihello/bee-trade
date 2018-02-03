@@ -21,7 +21,7 @@ class Game extends JPanel implements Common {
 
 		
 		field = new Field("France");
-		player = new Player(new Position(8, 6), 0, "Link", field.getMap());
+		player = new Player(field.getMap(), new Position(8, 6), 0, "Link");
 		
 	}
 
@@ -42,7 +42,7 @@ class Game extends JPanel implements Common {
 	}
 
 	private void update() {
-		field.update();
+		field.update(player.getPosition().x - MASS_X_NUM / 2, player.getPosition().y - MASS_Y_NUM / 2);
 		player.update();
 	}
 

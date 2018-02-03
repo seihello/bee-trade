@@ -5,14 +5,14 @@ import java.awt.image.BufferedImage;
 
 import java.util.Random;
 
-class Chara extends Sprite {
+class Chara extends AroundSprite {
 	private static BufferedImage image;
 	private String name;
 	private int direction = DOWN;
 	private static Random random;
 
-	Chara(Position position, int imageNo, String name) {
-		super(position, imageNo);
+	Chara(Mass[][] map, Position position, int imageNo, String name) {
+		super(map, position, imageNo);
 		this.name = name;
 		if(image == null) {
 			image = ImageLoader.getImage(path + "image/chara.gif");
@@ -20,6 +20,8 @@ class Chara extends Sprite {
 		if(random == null) {
 			random = new Random(System.currentTimeMillis());
 		}
+
+		map[position.x][position.y].setSprite(this);
 	}
 
 	void draw(Graphics g, int offsetX, int offsetY) {
@@ -40,5 +42,7 @@ class Chara extends Sprite {
 		if(randomValue < 4) {
 			direction = randomValue;
 		}
+
+		// map[position.x][position.y].setSprite(this);
 	}
 }

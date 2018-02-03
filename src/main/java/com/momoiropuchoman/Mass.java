@@ -53,6 +53,10 @@ class Mass implements Common {
 		this.sprite = sprite;
 	}
 
+	Sprite getSprite() {
+		return sprite;
+	}
+
 	private void createConverter() {
 		converter = new HashMap<Character, Integer>();
 		converter.put('黒', 0);
