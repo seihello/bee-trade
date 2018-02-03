@@ -8,6 +8,7 @@ com/momoiropuchoman/FieldDB.class
 com/momoiropuchoman/ImageLoader.class
 com/momoiropuchoman/Game.class
 com/momoiropuchoman/Field.class
+com/momoiropuchoman/InputHandler.class
 com/momoiropuchoman/MessageBoard.class
 com/momoiropuchoman/Position.class
 com/momoiropuchoman/Drawing.class

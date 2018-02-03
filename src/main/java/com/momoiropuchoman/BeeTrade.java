@@ -17,7 +17,7 @@ class BeeTrade extends JFrame implements Common {
 
 	public void run() {
 
-		this.addKeyListener(Key.getInstance());
+		this.addKeyListener(InputHandler.getInstance());
 		Game game = new Game();
 		this.add(game.getDrawing());
 		game.run();

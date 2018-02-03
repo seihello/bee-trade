@@ -19,6 +19,10 @@ class Player extends Sprite {
 		if(image == null) {
 			image = ImageLoader.getImage(path + "image/chara.gif");
 		}
+
+		InputHandler inputHandler = InputHandler.getInstance();
+		inputHandler.setPlayer(this);
+		inputHandler.setKey(key);
 	}
 
 
@@ -114,6 +118,10 @@ class Player extends Sprite {
 			}
 		}
 
+	}
+
+	void talkToSprite() {
+		// 方向にいるSpriteのstartTalkingを呼ぶ
 	}
 
 
