@@ -8,7 +8,7 @@ import java.io.IOException;
 class MapLoader implements Common {
 	static Mass[][] load(String name) {
 		Mass[][] map = null;
-		String fieldPath = path + "field/" + name + "/";
+		String fieldPath = "field/" + name + "/";
 		try {
 			FileInputStream fis = new FileInputStream(fieldPath + "map");
 			InputStreamReader ir = new InputStreamReader(fis , "UTF-8");
@@ -32,7 +32,6 @@ class MapLoader implements Common {
 
 		} catch(IOException e) {
 			e.printStackTrace();
-			System.out.println("えらー");
 		}
 
 		return map;
