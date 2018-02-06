@@ -12,6 +12,9 @@ import java.util.List;
 
 class MessageBoard {
 
+	// 唯一のインスタンス
+	private static MessageBoard messageBoard = new MessageBoard();
+
 	private String name = "";
 	private List<String> messages = new ArrayList<String>();
 	private String overMessage = "";
@@ -24,6 +27,14 @@ class MessageBoard {
 	public static final int HEIGHT = 150;
 
 	public static final Color tGray = new Color(50, 50, 50, 200);
+
+	private MessageBoard() {
+		// do nothing.
+	}
+
+	static MessageBoard getInstance() {
+		return messageBoard;
+	}
 
 	protected void draw(Graphics g) {
 		g.setColor(tGray);
@@ -55,6 +66,10 @@ class MessageBoard {
 		}
 	}
 
+
+	/**
+	* @return 終了したらfalse
+	*/
 	boolean nextMessage() {
 		index ++;
 		if(messages.size() <= index) {

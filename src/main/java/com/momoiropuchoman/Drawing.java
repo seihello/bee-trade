@@ -8,6 +8,7 @@ import java.awt.Graphics;
 class Drawing extends JPanel implements Common {
 	Field field;
 	Player player;
+	MessageBoard messageBoard = MessageBoard.getInstance();
 
 	Drawing(Field field, Player player) {
 
@@ -27,6 +28,9 @@ class Drawing extends JPanel implements Common {
 		super.paintComponent(graphics);	
 		field.draw(graphics, player.getPosition().x - MASS_X_NUM / 2, player.getPosition().y - MASS_Y_NUM / 2, player.getDx(), player.getDy());
 		player.draw(graphics, (MASS_X_NUM / 2) * MASS_SIZE, (MASS_Y_NUM / 2) * MASS_SIZE);
+		if(player.getMode() == Player.TALKING) {
+			messageBoard.draw(graphics);
+		}
 	}
 
 

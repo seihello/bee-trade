@@ -8,9 +8,13 @@ class Player extends Sprite {
 	Key key;
 	private int dx = 0, dy = 0;
 	private int direction = UP;
-	private boolean isMoving = false;
 	private static BufferedImage image;
 	private String name;
+
+	public static final int MOVABLE = 0;
+	public static final int MOVING = 1;
+	public static final int TALKING = 2;
+	private int mode = MOVABLE;
 
 	Player(Mass[][] map, Position position, int imageNo, String name) {
 		super(map, position, imageNo);
@@ -101,30 +105,39 @@ class Player extends Sprite {
 
 	void update() {
 
-		if(!isMoving && key.getPressedKey() != NO) {
+		if(mode == MOVABLE && key.getPressedKey() != NO) {
 			if(key.getPressedKey() == direction && canMove()) {
-				isMoving = true;
+				mode = MOVING;
 			} else {
 				updateDirection();
 			}
 		}
 		
-		if(isMoving) {
+		if(mode == MOVING) {
 			updateDefference();
 			if(hasMovedOneMass()) {
 				dx = 0; dy = 0;
-				isMoving = false;
+				mode = MOVABLE;
 				updatePosition();
 			}
 		}
 
 	}
 
-	void talkToSprite() {
-		// 方向にいるSpriteのstartTalkingを呼ぶ
+	void talk() {
+		AroundSprite aroundSprite = (AroundSprite)map[getNextX()][getNextY()].getSprite();
+		if(aroundSprite != null) {
+			if(aroundSprite.talked()) {
+				mode = TALKING;
+			} 
+		}
 	}
 
-
+	void nod() {
+		if(!messageBoard.nextMessage()) {
+			mode = MOVABLE;
+		}
+	}
 
 	int getNextX() {
 		switch(direction) {
@@ -167,8 +180,8 @@ class Player extends Sprite {
 		return direction;
 	}
 
-	boolean isMoving() {
-		return isMoving;
+	int getMode() {
+		return mode;
 	}
 
 	void setMap(Mass[][] map) {

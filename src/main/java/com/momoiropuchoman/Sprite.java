@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 abstract class Sprite implements Common {
 
-	static MessageBoard messageBoard;
+	static MessageBoard messageBoard = MessageBoard.getInstance();
 
 	protected Mass[][] map;
 	protected Position position;

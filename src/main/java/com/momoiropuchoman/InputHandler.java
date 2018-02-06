@@ -28,10 +28,15 @@ class InputHandler implements KeyListener, Common {
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
+		int code = keyEvent.getKeyCode();
 		if(code >= KeyEvent.VK_LEFT && code <= KeyEvent.VK_DOWN) {
 			key.setPressedKey(key.toDirection(keyEvent.getKeyCode()));
 		} else if(code == KeyEvent.VK_ENTER) {
-			player.talkToSprite();
+			if(player.getMode() == Player.MOVABLE) {
+				player.talk();
+			} else if(player.getMode() == Player.TALKING) {
+				player.nod();
+			}
 
 		}
 	}
