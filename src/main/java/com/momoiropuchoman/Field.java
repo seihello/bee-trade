@@ -24,7 +24,7 @@ class Field implements Common {
 		charas = new FieldDB().getCharasAsAroundSprite(fieldName, map);
 
 		if(massImage == null) {
-			massImage = ImageLoader.getImage(path + "image/mass.gif");
+			massImage = ImageLoader.getImage("img/mass.gif");
 		}		
 	}
 

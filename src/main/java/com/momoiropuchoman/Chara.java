@@ -15,7 +15,7 @@ class Chara extends AroundSprite {
 		super(map, position, imageNo);
 		this.name = name;
 		if(image == null) {
-			image = ImageLoader.getImage(path + "image/chara.gif");
+			image = ImageLoader.getImage("img/chara.gif");
 		}
 		if(random == null) {
 			random = new Random(System.currentTimeMillis());

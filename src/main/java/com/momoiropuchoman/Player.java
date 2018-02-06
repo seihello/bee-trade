@@ -21,7 +21,7 @@ class Player extends Sprite {
 		this.name = name;
 		key = Key.getInstance();
 		if(image == null) {
-			image = ImageLoader.getImage(path + "image/chara.gif");
+			image = ImageLoader.getImage("img/chara.gif");
 		}
 
 		InputHandler inputHandler = InputHandler.getInstance();

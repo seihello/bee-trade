@@ -17,7 +17,8 @@ class Mass implements Common {
 
 	Mass(char kind) {
 		if(massImage == null) {
-			massImage = ImageLoader.getImage(path + "image/mass.gif");
+			// massImage = ImageLoader.getImage(path + "image/mass.gif");
+			massImage = ImageLoader.getImage("img/mass.gif");
 		}
 		if(converter == null) {
 			createConverter();
