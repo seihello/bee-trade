@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.sound.sampled.*;
+
+import java.io.File;
+
 class Field implements Common {
 	Mass[][] map;
 	Mass outOfField;
@@ -25,7 +29,19 @@ class Field implements Common {
 
 		if(massImage == null) {
 			massImage = ImageLoader.getImage("img/mass.gif");
-		}		
+		}
+
+
+		try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sound/NoRainNoRainbow.wav"));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			FloatControl gainControl = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-20.0f); 
+			clip.start();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	void draw(Graphics graphics, int initX, int initY, int dx, int dy) {
