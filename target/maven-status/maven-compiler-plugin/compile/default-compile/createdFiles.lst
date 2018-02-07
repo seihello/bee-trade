@@ -1,6 +1,7 @@
 com/momoiropuchoman/MapLoader.class
 com/momoiropuchoman/Player.class
 com/momoiropuchoman/DB.class
+com/momoiropuchoman/AudioPlayer.class
 com/momoiropuchoman/FieldDB.class
 com/momoiropuchoman/Game.class
 com/momoiropuchoman/InputHandler.class
