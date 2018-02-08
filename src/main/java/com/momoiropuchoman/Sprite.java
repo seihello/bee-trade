@@ -8,7 +8,7 @@ abstract class Sprite implements Common {
 
 	static MessageBoard messageBoard = MessageBoard.getInstance();
 
-	protected Mass[][] map;
+	protected static Mass[][] map;
 	protected Position position;
 	protected int imageNo;
 
@@ -24,5 +24,7 @@ abstract class Sprite implements Common {
 	Position getPosition() {
 		return position;
 	}
+
+
 
 }

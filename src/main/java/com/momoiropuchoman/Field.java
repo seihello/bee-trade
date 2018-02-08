@@ -10,6 +10,7 @@ import java.util.Set;
 
 
 class Field implements Common {
+	static final String path = "field/";
 	Mass[][] map;
 	Mass outOfField;
 	
@@ -31,7 +32,8 @@ class Field implements Common {
 			massImage = ImageLoader.getImage("img/mass.gif");
 		}
 
-		audioPlayer = new AudioPlayer("sound/NoRainNoRainbow.wav");
+		// audioPlayer = new AudioPlayer("sound/NoRainNoRainbow.wav");
+		audioPlayer = new AudioPlayer("sound/WNW.wav");
 		audioPlayer.loop();
 	}
 
