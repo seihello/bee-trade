@@ -1,4 +1,4 @@
-## Usage
+## How to use
 ```bash
 $ cd BeeTrade
 $ mvn package
